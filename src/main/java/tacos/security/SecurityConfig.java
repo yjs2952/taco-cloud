@@ -36,6 +36,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             .usersByUsernameQuery(
                     "select username, password, enabled from users where username=?")
             .authoritiesByUsernameQuery(
-            "select username, authority from authorities where username=?");
+                    "select username, authority from authorities where username=?")
+            .passwordEncoder(new NoEncodingPasswordEncoder());
     }
 }
