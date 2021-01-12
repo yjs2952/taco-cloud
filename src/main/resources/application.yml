@@ -1,0 +1,12 @@
+spring.thymeleaf.cache=false
+
+logging:
+  path: /var/logs/
+  file: TacoCloud.log
+  level:
+    root: warn
+    org.springframework.security: debug
+
+taco:
+  orders:
+    pageSize: 10
