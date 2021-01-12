@@ -5,6 +5,7 @@ logging:
   file: TacoCloud.log
   level:
     root: warn
+    tacos: debug
     org.springframework.security: debug
 
 taco:
