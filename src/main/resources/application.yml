@@ -1,4 +1,10 @@
-spring.thymeleaf.cache=false
+
+taco:
+  orders:
+    pageSize: 10
+spring:
+  thymeleaf:
+    cache: false
 
 logging:
   path: /var/logs/
@@ -7,7 +13,3 @@ logging:
     root: warn
     tacos: debug
     org.springframework.security: debug
-
-taco:
-  orders:
-    pageSize: 10
