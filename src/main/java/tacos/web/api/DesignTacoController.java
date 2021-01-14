@@ -1,7 +1,6 @@
-package tacos.api;
+package tacos.web.api;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
@@ -10,7 +9,6 @@ import tacos.Taco;
 import tacos.data.TacoRepository;
 
 import javax.persistence.EntityNotFoundException;
-import java.util.Optional;
 
 @RestController
 @RequestMapping(path = "/design", produces = "application/json")
