@@ -5,6 +5,9 @@ taco:
 spring:
   thymeleaf:
     cache: false
+  data:
+    rest:
+      base-path: /api
 
 logging:
   path: /var/logs/
