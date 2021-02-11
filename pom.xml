@@ -11,6 +11,7 @@
         <module>taco-cloud-ui</module>
         <module>taco-cloud-security</module>
         <module>taco-cloud-web</module>
+        <module>taco-cloud-restclient</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
