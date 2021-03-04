@@ -36,17 +36,22 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //            .and()
 //            .httpBasic();
             .authorizeRequests()
-            .antMatchers("/design", "/orders")
-            .hasRole("USER")
-            .antMatchers("/", "/**").permitAll()
+                .anyRequest().permitAll()
+//            .antMatchers("/design", "/orders")
+//            .hasRole("USER")
+//            .antMatchers("/", "/**").permitAll()
+//            .and()
+//            .formLogin()
+//            .loginPage("/login")
+//            .and()
+//            .logout()
+//            .logoutSuccessUrl("/")
             .and()
-            .formLogin()
-            .loginPage("/login")
-            .and()
-            .logout()
-            .logoutSuccessUrl("/")
-            .and()
-            .csrf();
+            .csrf().disable()
+            .headers()
+            .frameOptions()
+            .sameOrigin()
+        ;
     }
 
     @Override

@@ -1,16 +1,15 @@
 package tacos.web.api;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.hateoas.CollectionModel;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 import tacos.Ingredient;
 import tacos.data.IngredientRepository;
 
-import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
-import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
+import java.net.URI;
+import java.util.Optional;
 
 @RestController
 @RequestMapping(path = "/ingredients", produces = "application/json")
@@ -21,10 +20,33 @@ public class IngredientController {
     private final IngredientRepository ingredientRepository;
 
     @GetMapping
-    public CollectionModel<IngredientResource> allIngredients() {
-        Iterable<Ingredient> ingredients = ingredientRepository.findAll();
-        CollectionModel<IngredientResource> ingredientResources = new IngredientResourceAssembler().toCollectionModel(ingredients);
-        ingredientResources.add(linkTo(methodOn(this.getClass()).allIngredients()).withRel("recents"));
-        return ingredientResources;
+    public Iterable<Ingredient> allIngredients() {
+        return ingredientRepository.findAll();
+    }
+
+    @GetMapping("/{id}")
+    public Optional<Ingredient> byId(@PathVariable String id) {
+        return ingredientRepository.findById(id);
+    }
+
+    @PutMapping("/{id}")
+    public void updateIngredient(@PathVariable String id, @RequestBody Ingredient ingredient) {
+        if (!ingredient.getId().equals(id)) {
+            throw new IllegalStateException("Given ingredient's ID doesn't match the ID in the path.");
+        }
+        ingredientRepository.save(ingredient);
+    }
+
+    @PostMapping
+    public ResponseEntity<Ingredient> postIngredient(@RequestBody Ingredient ingredient) {
+        Ingredient saved = ingredientRepository.save(ingredient);
+        HttpHeaders headers = new HttpHeaders();
+        headers.setLocation(URI.create("http://localhost:8080/ingredients/" + ingredient.getId()));
+        return new ResponseEntity<>(saved, headers, HttpStatus.CREATED);
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteIngredient(@PathVariable String id) {
+        ingredientRepository.deleteById(id);
     }
 }
