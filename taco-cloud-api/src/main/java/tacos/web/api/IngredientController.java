@@ -14,7 +14,8 @@ import java.util.Optional;
 
 @Slf4j
 @RestController
-@RequestMapping(path = "/ingredients", produces = "application/json")
+//@RequestMapping(path = "/ingredients", produces = "application/json")
+@RequestMapping(path="/ingredientsx", produces="application/json")
 @CrossOrigin("*")
 @RequiredArgsConstructor
 public class IngredientController {
