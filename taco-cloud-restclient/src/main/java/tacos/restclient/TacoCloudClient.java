@@ -151,10 +151,12 @@ public class TacoCloudClient {
   }
 
   public Ingredient addIngredient(Ingredient ingredient) {
+    log.info("ingredient : {}", ingredient);
     String ingredientsUrl = traverson
         .follow("ingredients")
         .asLink()
         .getHref();
+    log.info("ingredientsUrl : {}", ingredientsUrl);
     return rest.postForObject(ingredientsUrl,
                               ingredient,
                               Ingredient.class);

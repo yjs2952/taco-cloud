@@ -135,6 +135,7 @@ public class RestExamples {
       for (Ingredient ingredient : allIngredients) {
         log.info("   -  " + ingredient);
       }
+      log.info("pico : {}", pico);
       tacoCloudClient.deleteIngredient(pico);
     };
   }

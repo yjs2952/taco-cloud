@@ -1,5 +1,6 @@
 package tacos;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AccessLevel;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -15,6 +16,7 @@ import javax.persistence.Id;
 public class Ingredient {
 
     @Id
+    @JsonIgnore(false)
     private final String id;
     private final String name;
     private final Type type;

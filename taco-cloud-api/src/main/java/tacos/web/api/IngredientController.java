@@ -1,6 +1,7 @@
 package tacos.web.api;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,6 +12,7 @@ import tacos.data.IngredientRepository;
 import java.net.URI;
 import java.util.Optional;
 
+@Slf4j
 @RestController
 @RequestMapping(path = "/ingredients", produces = "application/json")
 @CrossOrigin("*")
@@ -42,6 +44,7 @@ public class IngredientController {
         Ingredient saved = ingredientRepository.save(ingredient);
         HttpHeaders headers = new HttpHeaders();
         headers.setLocation(URI.create("http://localhost:8080/ingredients/" + ingredient.getId()));
+        log.info("saved ingredient : {} : ", saved);
         return new ResponseEntity<>(saved, headers, HttpStatus.CREATED);
     }
 
