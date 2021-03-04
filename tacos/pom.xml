@@ -33,7 +33,16 @@
 			<artifactId>taco-cloud-security</artifactId>
 			<version>${taco-cloud.version}</version>
 		</dependency>
-
+		<dependency>
+			<groupId>sia</groupId>
+			<artifactId>taco-cloud-api</artifactId>
+			<version>${taco-cloud.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>sia</groupId>
+			<artifactId>taco-cloud-ui</artifactId>
+			<version>${taco-cloud.version}</version>
+		</dependency>
 
 
 		<dependency>

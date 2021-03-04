@@ -16,3 +16,4 @@ logging:
     root: warn
     tacos: debug
     org.springframework.security: debug
+    org.springframework.web: debug
