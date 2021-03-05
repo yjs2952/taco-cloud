@@ -147,11 +147,13 @@ public class TacoCloudClient {
           .follow("ingredients")
           .toObject(ingredientType);
 
+    log.info("ingredientRes : {}", ingredientRes);
+
     return ingredientRes.getContent();
   }
 
   public Ingredient addIngredient(Ingredient ingredient) {
-    log.info("ingredient : {}", ingredient);
+    log.info("addIngredient : {}", ingredient);
     String ingredientsUrl = traverson
         .follow("ingredients")
         .asLink()
@@ -166,6 +168,8 @@ public class TacoCloudClient {
     ParameterizedTypeReference<CollectionModel<Taco>> tacoType =
             new ParameterizedTypeReference<>() {
             };
+
+    log.info("tacoType : {}", tacoType);
 
     CollectionModel<Taco> tacoRes =
         traverson

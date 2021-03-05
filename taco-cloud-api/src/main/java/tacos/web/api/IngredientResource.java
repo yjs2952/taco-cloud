@@ -1,16 +1,14 @@
 package tacos.web.api;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import org.springframework.hateoas.RepresentationModel;
 import tacos.Ingredient;
 
-import static tacos.Ingredient.*;
+import static tacos.Ingredient.Type;
 
 @Getter
 public class IngredientResource extends RepresentationModel<IngredientResource> {
 
-    @JsonIgnore(false)
     private final String id;
     private final String name;
     private final Type type;
