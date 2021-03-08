@@ -3,7 +3,6 @@ package tacos.security;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -40,38 +39,39 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //            .antMatchers("/design", "/orders")
 //            .hasRole("USER")
 //            .antMatchers("/", "/**").permitAll()
-            .and()
-                .formLogin()
-                .loginPage("/login")
-            .and()
-                .logout()
-                .logoutSuccessUrl("/")
+//            .and()
+//                .formLogin()
+//                .loginPage("/login")
+//            .and()
+//                .logout()
+//                .logoutSuccessUrl("/")
             .and()
                 .csrf()
-                .ignoringAntMatchers("/h2-console/**", "/ingredients/**", "/design", "/orders/**")
-            .and()
-                .headers()
-                .frameOptions()
-                .sameOrigin()
+                .disable()
+//                .ignoringAntMatchers("/h2-console/**", "/ingredients/**", "/design", "/orders/**")
+//            .and()
+//                .headers()
+//                .frameOptions()
+//                .sameOrigin()
         ;
     }
 
-    @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth
-            .userDetailsService(userDetailsService)
-            .passwordEncoder(encoder())
-            /*.ldapAuthentication()
-            .userSearchBase("ou=people")
-            .userSearchFilter("(uid={0})")
-            .groupSearchBase("ou=groups")
-            .groupSearchFilter("member={0}")
-            .contextSource().root("dc=tacocloud,dc=com")
-            .ldif("classpath:users.ldif")
-            .and()
-            .passwordCompare()
-            .passwordEncoder(new BCryptPasswordEncoder())
-            .passwordAttribute("userPasscode")*/
-        ;
-    }
+//    @Override
+//    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+//        auth
+//            .userDetailsService(userDetailsService)
+//            .passwordEncoder(encoder())
+//            /*.ldapAuthentication()
+//            .userSearchBase("ou=people")
+//            .userSearchFilter("(uid={0})")
+//            .groupSearchBase("ou=groups")
+//            .groupSearchFilter("member={0}")
+//            .contextSource().root("dc=tacocloud,dc=com")
+//            .ldif("classpath:users.ldif")
+//            .and()
+//            .passwordCompare()
+//            .passwordEncoder(new BCryptPasswordEncoder())
+//            .passwordAttribute("userPasscode")*/
+//        ;
+//    }
 }
