@@ -12,6 +12,8 @@
         <module>taco-cloud-security</module>
         <module>taco-cloud-web</module>
         <module>taco-cloud-restclient</module>
+        <module>taco-cloud-messaging-jms</module>
+        <module>taco-cloud-kitchen</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
