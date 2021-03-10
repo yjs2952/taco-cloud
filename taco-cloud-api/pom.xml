@@ -48,6 +48,11 @@
             <artifactId>taco-cloud-messaging-rabbitmq</artifactId>
             <version>${taco-cloud.version}</version>
         </dependency>
+        <dependency>
+            <groupId>sia</groupId>
+            <artifactId>taco-cloud-messaging-kafka</artifactId>
+            <version>${taco-cloud.version}</version>
+        </dependency>
 
         <!-- Necessary Boot starters -->
         <dependency>
